@@ -75,13 +75,13 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.0
 .btn-txt:hover{color:var(--magenta)}
 
 /* ===== HERO ===== */
-.hero{position:relative;padding:120px 0 90px;overflow:hidden}
+.hero{position:relative;padding:44px 0 90px;overflow:hidden}
 .hero::before{
   content:"";position:absolute;inset:0;pointer-events:none;
   background:
-    radial-gradient(60% 55% at 78% 30%,rgba(214,75,180,.28),transparent 60%),
+    radial-gradient(55% 60% at 82% 55%,rgba(214,75,180,.42),rgba(122,46,92,.28) 35%,transparent 70%),
     radial-gradient(50% 45% at 12% 78%,rgba(181,123,255,.18),transparent 65%),
-    radial-gradient(90% 60% at 50% 0%,rgba(122,46,92,.28),transparent 60%);
+    radial-gradient(90% 60% at 50% 0%,rgba(122,46,92,.22),transparent 60%);
   z-index:0;
 }
 .hero .wrap{position:relative;z-index:1}
@@ -95,57 +95,33 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.0
 .hero .sub{font-size:20px;color:var(--cream-dim);max-width:44ch;margin-top:36px;line-height:1.55;font-weight:300}
 .hero .cta-row{margin-top:40px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 
-/* hero portrait tile */
+/* hero portrait — no plate, blends into hero gradient */
 .portrait-tile{
   position:relative;
   aspect-ratio:4/5;
-  background:linear-gradient(160deg,var(--wine) 0%,var(--plum) 55%,var(--bg-3) 100%);
-  border-radius:8px;
-  overflow:hidden;
-  border:1px solid var(--line-2);
-  box-shadow:0 40px 100px -30px rgba(214,75,180,.35), 0 20px 60px -20px rgba(0,0,0,.6);
+  background:transparent;
+  border:none;
+  border-radius:0;
+  box-shadow:none;
+  overflow:visible;
 }
 .portrait-tile::before{
-  content:"";position:absolute;inset:0;
-  background:
-    radial-gradient(80% 60% at 50% 100%,rgba(214,75,180,.35),transparent 70%),
-    radial-gradient(50% 40% at 20% 10%,rgba(255,255,255,.05),transparent 60%);
-  z-index:1;
+  content:"";position:absolute;
+  left:50%;top:52%;transform:translate(-50%,-50%);
+  width:130%;height:112%;
+  background:radial-gradient(50% 45% at 50% 50%,rgba(214,75,180,.55),rgba(122,46,92,.28) 45%,transparent 72%);
+  filter:blur(30px);
+  z-index:0;pointer-events:none;
 }
 .portrait-tile img{
   position:absolute;left:50%;bottom:0;transform:translateX(-50%);
   width:auto;height:100%;max-width:none;
   z-index:2;
-  filter:drop-shadow(0 30px 40px rgba(0,0,0,.35));
-}
-.portrait-tile .stamp{
-  position:absolute;left:22px;top:22px;z-index:3;
-  font-family:'Fraunces',serif;font-style:italic;font-size:14px;color:var(--cream);
-  border:1px solid var(--line-2);border-radius:999px;padding:6px 12px;backdrop-filter:blur(6px);background:rgba(0,0,0,.25);
-}
-.portrait-tile .stamp b{color:var(--magenta);font-weight:500;font-style:normal;letter-spacing:.1em;font-family:'Inter';font-size:11px}
-.portrait-tile .caption{
-  position:absolute;left:22px;right:22px;bottom:22px;z-index:4;
-  display:flex;align-items:flex-end;justify-content:space-between;gap:16px;color:var(--cream);
-  pointer-events:none;
-}
-.portrait-tile .caption .tag{
-  font-family:'Inter';font-size:11px;color:var(--cream);letter-spacing:.16em;text-transform:uppercase;font-weight:600;
-  padding:8px 14px;border:1px solid var(--line-2);border-radius:999px;backdrop-filter:blur(8px);background:rgba(0,0,0,.35);
-}
-.portrait-tile .caption .loc{
-  font-family:'Inter';font-size:11px;color:var(--cream);letter-spacing:.16em;text-transform:uppercase;font-weight:600;
-  padding:8px 14px;border:1px solid var(--line-2);border-radius:999px;backdrop-filter:blur(8px);background:rgba(0,0,0,.35);
-}
-.portrait-tile .initial{
-  position:absolute;right:-20px;bottom:-40px;z-index:1;
-  font-family:'Fraunces',serif;font-style:italic;font-weight:400;
-  font-size:420px;line-height:.8;color:rgba(255,255,255,.05);
-  pointer-events:none;user-select:none;letter-spacing:-.06em;
+  filter:drop-shadow(0 24px 40px rgba(0,0,0,.45));
 }
 @media(max-width:900px){
-  .hero-grid{grid-template-columns:1fr;gap:50px}
-  .portrait-tile{max-width:420px;margin:0 auto}
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .portrait-tile{max-width:440px;margin:0 auto}
 }
 
 /* hero ticker */
@@ -171,42 +147,45 @@ section{padding:120px 0;position:relative}
 .stitle .em{color:var(--violet)}
 .slead{font-size:19px;color:var(--cream-dim);max-width:60ch;margin-top:22px;font-weight:300;line-height:1.6}
 
-/* ===== PAIN as tiles ===== */
+/* ===== PAIN — single large quote tile ===== */
 #pain{background:var(--bg)}
-.pain-grid{
-  margin-top:60px;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:14px;
-}
-.pain-tile{
+.pain-one{
+  margin-top:64px;
   position:relative;
   background:var(--bg-2);
   border:1px solid var(--line);
-  border-radius:6px;
-  padding:34px 26px 28px;
-  min-height:280px;
-  display:flex;flex-direction:column;justify-content:space-between;gap:24px;
-  transition:border-color .3s,transform .3s,background .3s;
+  border-radius:8px;
+  padding:80px 72px;
+  max-width:1000px;
   overflow:hidden;
 }
-.pain-tile::after{
+.pain-one::after{
   content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(120% 60% at 100% 100%,rgba(214,75,180,.14),transparent 60%);
-  opacity:0;transition:opacity .35s;
+  background:radial-gradient(70% 80% at 100% 100%,rgba(214,75,180,.22),transparent 65%);
 }
-.pain-tile:hover{border-color:var(--plum-line);transform:translateY(-3px);background:linear-gradient(180deg,var(--bg-2),var(--plum))}
-.pain-tile:hover::after{opacity:1}
-.pain-tile .n{font-family:'Fraunces',serif;font-style:italic;font-size:22px;color:var(--magenta)}
-.pain-tile .said{font-family:'Fraunces',serif;font-style:italic;font-size:22px;line-height:1.22;color:var(--cream);letter-spacing:-.01em;position:relative;z-index:1}
-.pain-tile .whatis{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);position:relative;z-index:1}
-@media(max-width:1000px){.pain-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.pain-grid{grid-template-columns:1fr}}
+.pain-one .n{font-family:'Fraunces',serif;font-style:italic;font-size:32px;color:var(--magenta);margin-bottom:28px;position:relative;z-index:1;line-height:1}
+.pain-one .said{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(30px,4.4vw,54px);line-height:1.12;color:var(--cream);letter-spacing:-.015em;position:relative;z-index:1;max-width:22ch}
+.pain-one .whatis{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);position:relative;z-index:1;margin-top:38px}
+@media(max-width:640px){.pain-one{padding:52px 32px}}
 
 /* ===== DOORS ===== */
 #doors{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.doors-heading{
+  max-width:720px;margin:0 auto 80px;text-align:center;
+}
+.doors-heading .idx{display:inline-block;margin-bottom:26px}
+.doors-heading h2{
+  font-family:'Fraunces',serif;font-weight:500;
+  font-size:clamp(44px,6.2vw,88px);letter-spacing:-.025em;line-height:1;
+  color:var(--cream);
+}
+.doors-heading h2 .em{font-style:italic;font-weight:400;color:var(--violet);display:block;margin-top:6px}
+.doors-heading p{
+  margin-top:30px;font-size:19px;color:var(--cream-dim);
+  font-weight:300;line-height:1.5;
+}
 .doors-grid{
-  margin-top:60px;
+  margin-top:0;
   display:grid;
   grid-template-columns:repeat(6,1fr);
   grid-auto-rows:minmax(240px,auto);
@@ -309,16 +288,11 @@ section{padding:120px 0;position:relative}
   box-shadow:0 30px 80px -30px rgba(214,75,180,.3);
 }
 .who-photo img{
-  position:absolute;left:50%;bottom:-2%;transform:translateX(-50%);
-  width:auto;height:104%;max-width:none;
+  position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+  width:118%;height:auto;max-width:none;
   filter:drop-shadow(0 24px 40px rgba(0,0,0,.35));
 }
 .who-photo .glow{position:absolute;inset:0;background:radial-gradient(70% 55% at 30% 25%,rgba(181,123,255,.25),transparent 65%);pointer-events:none;z-index:1}
-.who-photo .badge{
-  position:absolute;left:22px;top:22px;z-index:3;
-  font-family:'Inter';font-size:11px;color:var(--cream);letter-spacing:.16em;text-transform:uppercase;font-weight:600;
-  padding:8px 14px;border:1px solid var(--line-2);border-radius:999px;backdrop-filter:blur(8px);background:rgba(0,0,0,.35);
-}
 .who-shift{font-family:'Fraunces',serif;font-size:clamp(26px,3vw,34px);font-style:italic;line-height:1.25;margin:14px 0 28px;color:var(--cream);letter-spacing:-.01em;max-width:24ch}
 .who-shift b{color:var(--violet);font-weight:400}
 .who-body{font-size:16px;color:var(--cream-dim);line-height:1.7;font-weight:300;margin-bottom:16px;max-width:54ch}
@@ -390,7 +364,7 @@ footer .fmeta b{color:var(--cream);font-weight:500}
     <div>
       <span class="eyebrow">Работа с голосом и состоянием · взрослые</span>
       <h1>Голос без границ —<span class="l2 em">это голос,</span><span class="l2 mark">что перестал зажиматься</span></h1>
-      <p class="sub">Настоящий голос никуда не девается. Он просто ждёт, пока ему разрешат звучать в полную силу. Здесь мы это разрешение возвращаем.</p>
+      <p class="sub">Ваш голос ждёт, когда ему разрешат звучать в полную силу.</p>
       <div class="cta-row">
         <a class="btn btn-fill" href="#contact">Написать Елене
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -400,13 +374,7 @@ footer .fmeta b{color:var(--cream);font-weight:500}
     </div>
     <div>
       <div class="portrait-tile">
-        <div class="stamp"><b>EST.</b> голос без границ</div>
-        <div class="initial">Е</div>
         <img src="assets/elena-hero.png" alt="Елена Сикора-Соколовская">
-        <div class="caption">
-          <div class="tag">Вокал · Вокалотерапия</div>
-          <div class="loc">В. Новгород · онлайн</div>
-        </div>
       </div>
     </div>
   </div>
@@ -433,29 +401,12 @@ footer .fmeta b{color:var(--cream);font-weight:500}
   <div class="wrap">
     <div class="shead"><span class="idx">01 / КОМУ</span></div>
     <h2 class="stitle">Голос <span class="em">всё помнит</span></h2>
-    <p class="slead">Он садится не просто так. За зажатым, тихим, «не своим» звучанием почти всегда стоит что-то, что человек долго носит в себе.</p>
+    <p class="slead">За зажатым, тихим, «не своим» звучанием почти всегда стоит что-то, что человек долго носит в себе.</p>
 
-    <div class="pain-grid">
-      <div class="pain-tile reveal">
-        <div class="n">01</div>
-        <p class="said">Внутри звучу гораздо смелее, чем то, что выходит наружу.</p>
-        <div class="whatis">Голос сдержан · звуковой стыд</div>
-      </div>
-      <div class="pain-tile reveal">
-        <div class="n">02</div>
-        <p class="said">На важном моменте горло будто перехватывает, и голос садится.</p>
-        <div class="whatis">Зажим на публике</div>
-      </div>
-      <div class="pain-tile reveal">
-        <div class="n">03</div>
-        <p class="said">Пою чисто, а всё равно как не своим голосом.</p>
-        <div class="whatis">Потерян контакт со звучанием</div>
-      </div>
-      <div class="pain-tile reveal">
-        <div class="n">04</div>
-        <p class="said">Хочу звучать полнее и мягче, а не вполголоса, как привыкла.</p>
-        <div class="whatis">Женственность через голос</div>
-      </div>
+    <div class="pain-one reveal">
+      <div class="n">01</div>
+      <p class="said">Внутри звучу гораздо смелее, чем то, что выходит наружу.</p>
+      <div class="whatis">Голос сдержан · звуковой стыд</div>
     </div>
   </div>
 </section>
@@ -463,9 +414,11 @@ footer .fmeta b{color:var(--cream);font-weight:500}
 <!-- DOORS -->
 <section id="doors">
   <div class="wrap">
-    <div class="shead"><span class="idx">02 / НАПРАВЛЕНИЯ</span></div>
-    <h2 class="stitle">Один голос, <span class="em">разные двери</span></h2>
-    <p class="slead">Повод у каждого свой. Выберите то, что откликается, — с остального можно начать позже.</p>
+    <div class="doors-heading">
+      <span class="idx">02 / НАПРАВЛЕНИЯ</span>
+      <h2>Один голос. <span class="em">Разные точки входа.</span></h2>
+      <p>Выберите то, что вам откликается.</p>
+    </div>
 
     <div class="doors-grid">
       <div class="door d1 reveal">
@@ -580,7 +533,6 @@ footer .fmeta b{color:var(--cream);font-weight:500}
     <div class="who-grid" style="margin-top:60px">
       <div class="who-photo">
         <div class="glow"></div>
-        <div class="badge">Педагог · автор метода</div>
         <img src="assets/elena-about.png" alt="Елена Сикора-Соколовская">
       </div>
       <div>
@@ -602,7 +554,7 @@ footer .fmeta b{color:var(--cream);font-weight:500}
 <section class="bound">
   <div class="wrap">
     <div class="blabel">Важно</div>
-    <p>Занятия — это работа с голосом, телом и вниманием к себе. Они не заменяют психолога и не являются психотерапией. Если всплывает то, что требует более глубокой поддержки, я скажу об этом честно и помогу понять, куда обратиться дальше.</p>
+    <p>На моих занятиях происходит работа с голосом, телом и вниманием к себе. Это не заменяет психолога и не является психотерапией. Если в процессе работы с голосом всплывёт то, что потребует более глубокой поддержки, я скажу вам об этом и помогу понять, к кому обратиться.</p>
   </div>
 </section>
 
