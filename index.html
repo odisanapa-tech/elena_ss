@@ -88,10 +88,11 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.0
 .hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:70px;align-items:center}
 .hero .eyebrow{margin-bottom:34px;display:inline-block;padding:8px 14px;border:1px solid var(--line-2);border-radius:999px}
 .hero .eyebrow::before{content:"";display:inline-block;width:6px;height:6px;background:var(--magenta);border-radius:50%;margin-right:10px;vertical-align:middle;box-shadow:0 0 12px var(--magenta)}
-.hero h1{font-size:clamp(42px,4.8vw,68px);letter-spacing:-.015em;line-height:1.05}
+.hero h1{font-size:clamp(40px,4.6vw,62px);letter-spacing:-.015em;line-height:1.06}
 .hero h1 .l2{display:block}
 .hero h1 .em{color:var(--cream-dim);font-style:italic;font-weight:400}
 .hero h1 .mark{color:var(--magenta);font-style:italic;font-weight:400}
+.hero h1 .eq{color:var(--magenta);font-style:italic;font-weight:400;line-height:.9;padding:6px 0 2px}
 .hero .sub{font-size:20px;color:var(--cream-dim);max-width:44ch;margin-top:36px;line-height:1.55;font-weight:300}
 .hero .cta-row{margin-top:40px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 
@@ -363,7 +364,7 @@ footer .fmeta b{color:var(--cream);font-weight:500}
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow">Работа с голосом и состоянием · взрослые</span>
-      <h1>Голос без границ —<span class="l2 em">это голос,</span><span class="l2 mark">что перестал зажиматься</span></h1>
+      <h1>Голос без границ<span class="l2 eq">=</span><span class="l2 em">голос, который перестал зажиматься</span></h1>
       <p class="sub">Ваш голос ждёт, когда ему разрешат звучать в полную силу.</p>
       <div class="cta-row">
         <a class="btn btn-fill" href="#contact">Написать Елене
