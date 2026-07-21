@@ -113,9 +113,10 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.0
   z-index:1;
 }
 .portrait-tile img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 15%;
+  position:absolute;left:50%;bottom:0;transform:translateX(-50%);
+  width:auto;height:100%;max-width:none;
   z-index:2;
-  mix-blend-mode:normal;
+  filter:drop-shadow(0 30px 40px rgba(0,0,0,.35));
 }
 .portrait-tile .stamp{
   position:absolute;left:22px;top:22px;z-index:3;
@@ -124,13 +125,24 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.0
 }
 .portrait-tile .stamp b{color:var(--magenta);font-weight:500;font-style:normal;letter-spacing:.1em;font-family:'Inter';font-size:11px}
 .portrait-tile .caption{
-  position:absolute;left:22px;right:22px;bottom:22px;z-index:3;
+  position:absolute;left:22px;right:22px;bottom:22px;z-index:4;
   display:flex;align-items:flex-end;justify-content:space-between;gap:16px;color:var(--cream);
+  pointer-events:none;
 }
-.portrait-tile .caption .who{font-family:'Fraunces',serif;font-size:22px;line-height:1.15;letter-spacing:-.01em}
-.portrait-tile .caption .who span{display:block;font-size:12px;font-family:'Inter';color:var(--cream-dim);letter-spacing:.14em;text-transform:uppercase;margin-top:8px;font-weight:500}
-.portrait-tile .caption .loc{font-family:'Inter';font-size:12px;color:var(--cream-dim);text-align:right;letter-spacing:.06em}
-.portrait-tile .caption .loc b{display:block;color:var(--cream);font-size:14px;letter-spacing:-.01em;font-weight:600;margin-bottom:4px}
+.portrait-tile .caption .tag{
+  font-family:'Inter';font-size:11px;color:var(--cream);letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+  padding:8px 14px;border:1px solid var(--line-2);border-radius:999px;backdrop-filter:blur(8px);background:rgba(0,0,0,.35);
+}
+.portrait-tile .caption .loc{
+  font-family:'Inter';font-size:11px;color:var(--cream);letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+  padding:8px 14px;border:1px solid var(--line-2);border-radius:999px;backdrop-filter:blur(8px);background:rgba(0,0,0,.35);
+}
+.portrait-tile .initial{
+  position:absolute;right:-20px;bottom:-40px;z-index:1;
+  font-family:'Fraunces',serif;font-style:italic;font-weight:400;
+  font-size:420px;line-height:.8;color:rgba(255,255,255,.05);
+  pointer-events:none;user-select:none;letter-spacing:-.06em;
+}
 @media(max-width:900px){
   .hero-grid{grid-template-columns:1fr;gap:50px}
   .portrait-tile{max-width:420px;margin:0 auto}
@@ -292,12 +304,21 @@ section{padding:120px 0;position:relative}
 .who-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center;margin-top:20px}
 .who-photo{
   position:relative;aspect-ratio:4/5;
-  background:linear-gradient(160deg,var(--plum),var(--bg-3));
+  background:linear-gradient(160deg,var(--plum) 0%,var(--bg-3) 60%,var(--bg-2) 100%);
   border-radius:8px;overflow:hidden;border:1px solid var(--line-2);
   box-shadow:0 30px 80px -30px rgba(214,75,180,.3);
 }
-.who-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
-.who-photo .glow{position:absolute;inset:0;background:radial-gradient(80% 60% at 30% 20%,rgba(181,123,255,.22),transparent 65%);pointer-events:none}
+.who-photo img{
+  position:absolute;left:50%;bottom:-2%;transform:translateX(-50%);
+  width:auto;height:104%;max-width:none;
+  filter:drop-shadow(0 24px 40px rgba(0,0,0,.35));
+}
+.who-photo .glow{position:absolute;inset:0;background:radial-gradient(70% 55% at 30% 25%,rgba(181,123,255,.25),transparent 65%);pointer-events:none;z-index:1}
+.who-photo .badge{
+  position:absolute;left:22px;top:22px;z-index:3;
+  font-family:'Inter';font-size:11px;color:var(--cream);letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+  padding:8px 14px;border:1px solid var(--line-2);border-radius:999px;backdrop-filter:blur(8px);background:rgba(0,0,0,.35);
+}
 .who-shift{font-family:'Fraunces',serif;font-size:clamp(26px,3vw,34px);font-style:italic;line-height:1.25;margin:14px 0 28px;color:var(--cream);letter-spacing:-.01em;max-width:24ch}
 .who-shift b{color:var(--violet);font-weight:400}
 .who-body{font-size:16px;color:var(--cream-dim);line-height:1.7;font-weight:300;margin-bottom:16px;max-width:54ch}
@@ -380,10 +401,11 @@ footer .fmeta b{color:var(--cream);font-weight:500}
     <div>
       <div class="portrait-tile">
         <div class="stamp"><b>EST.</b> голос без границ</div>
+        <div class="initial">Е</div>
         <img src="assets/elena-hero.png" alt="Елена Сикора-Соколовская">
         <div class="caption">
-          <div class="who">Елена<br>Сикора-Соколовская<span>вокал · вокалотерапия</span></div>
-          <div class="loc"><b>В. Новгород</b>и онлайн</div>
+          <div class="tag">Вокал · Вокалотерапия</div>
+          <div class="loc">В. Новгород · онлайн</div>
         </div>
       </div>
     </div>
@@ -557,8 +579,9 @@ footer .fmeta b{color:var(--cream);font-weight:500}
     <h2 class="stitle">Не «поставить голос». <span class="em">Отпустить его.</span></h2>
     <div class="who-grid" style="margin-top:60px">
       <div class="who-photo">
-        <img src="assets/elena-about.png" alt="Елена Сикора-Соколовская">
         <div class="glow"></div>
+        <div class="badge">Педагог · автор метода</div>
+        <img src="assets/elena-about.png" alt="Елена Сикора-Соколовская">
       </div>
       <div>
         <p class="who-shift">За годы работы я перестала «ставить голоса». Оказалось, чаще нужно другое: <b>помочь голосу перестать защищаться и зазвучать свободно.</b></p>
